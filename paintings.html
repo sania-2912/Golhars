@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golhars - Paintings</title>
+  <link rel="stylesheet" href="paintings.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">
+        <a href="index.html" class="logo-link">
+          <img src="logo.png" alt="Golhars Logo" class="logo-img">
+        </a>
+      </h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="hover">Home</a></li>
+          <li><a href="paintings.html" class="hover">Paintings</a></li>
+          <li><a href="crochet.html" class="hover">Crochet</a></li>
+          <li><a href="customize.html" class="hover">Customize</a></li>
+          <li><a href="cart.html" class="hover">Cart</a></li>
+          <li><a href="faq.html" class="hover">FAQ</a></li>
+          <li><a href="contact.html" class="hover">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<div class="main-content">
+  <!-- Filters Section -->
+  <aside class="filters">
+    <h2>Filters</h2>
+    <!-- Collection Filters -->
+    <div class="filter-section">
+      <h3>Collection</h3>
+      <ul>
+        <li><label><input type="checkbox"> Abstract</label></li>       
+        <li><label><input type="checkbox"> CityScapes</label></li>
+        <li><label><input type="checkbox"> Cultural</label></li>
+        <li><label><input type="checkbox"> Documentary</label></li>
+        <li><label><input type="checkbox"> Folk</label></li>
+        <li><label><input type="checkbox"> Figurative</label></li>
+        <li><label><input type="checkbox"> Glass</label></li>
+        <li><label><input type="checkbox"> Landscape</label></li>
+        <li><label><input type="checkbox"> Modern Art</label></li>        
+        <li><label><input type="checkbox"> Miniature</label></li>       
+        <li><label><input type="checkbox"> Murals</label></li>       
+        <li><label><input type="checkbox"> Nature</label></li>
+        <li><label><input type="checkbox"> Portraits</label></li>   
+      </ul>
+    </div>
+    <div class="filter-section">
+      <h3>Color Scheme</h3>
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #FFFFFF;"></span>
+            White Walls
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #808080;"></span>
+            <span class="color-circle" style="background-color: #A9A9A9;"></span>
+            <span class="color-circle" style="background-color: #D3D3D3;"></span>
+            Grayscale/Neutral Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #FF5733;"></span>
+            <span class="color-circle" style="background-color: #FFC300;"></span>
+            <span class="color-circle" style="background-color: rgb(231, 65, 143);"></span>
+            Bold/Vibrant Colors
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #FFD1DC;"></span>
+            <span class="color-circle" style="background-color: #E0BBE4;"></span>
+            <span class="color-circle" style="background-color: #FDFD96;"></span>
+            Pastels
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #8B4513;"></span>
+            <span class="color-circle" style="background-color: #A0522D;"></span>
+            <span class="color-circle" style="background-color: #CD853F;"></span>
+            Earth Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #edbfdf;"></span>
+            <span class="color-circle" style="background-color: #E6E6FA;"></span>
+            <span class="color-circle" style="background-color: #ebed95;"></span>
+            Light/Soft Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: black;"></span>
+            <span class="color-circle" style="background-color: blue;"></span>
+            <span class="color-circle" style="background-color: red;"></span>
+            Dark/Deep Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #42ebc9;"></span>
+            <span class="color-circle" style="background-color: #B0C4DE;"></span>
+            <span class="color-circle" style="background-color: #dc6fe3;"></span>
+            Muted Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #FFB6C1;"></span>
+            <span class="color-circle" style="background-color: #d9ff2f;"></span>
+            <span class="color-circle" style="background-color: #87CEFA;"></span>
+            Spring Palette
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #ed3d2a;"></span>
+            <span class="color-circle" style="background-color: #FF6347;"></span>
+            <span class="color-circle" style="background-color: #f5d20e;"></span>
+            Summer Palette
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #f09730;"></span>
+            <span class="color-circle" style="background-color: #dc511f;"></span>
+            <span class="color-circle" style="background-color: #8B0000;"></span>
+            Autumn Palette
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #ADD8E6;"></span>
+            <span class="color-circle" style="background-color: #87c4f7;"></span>
+            <span class="color-circle" style="background-color: #c2d2e3;"></span>
+            Winter Palette
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #06396c;"></span>
+            <span class="color-circle" style="background-color: #2672de;"></span>
+            <span class="color-circle" style="background-color: #5e59f3;"></span>
+             Blue Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #f68e9f;"></span>
+            <span class="color-circle" style="background-color: #ee4d9d;"></span>
+            <span class="color-circle" style="background-color: #d90978;"></span>
+             Pink Tones
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox">
+            <span class="color-circle" style="background-color: #97ce20;"></span>
+            <span class="color-circle" style="background-color: #4ccd32;"></span>
+            <span class="color-circle" style="background-color: #00642f;"></span>
+            Green Tones
+          </label>
+        </li>
+        
+      </ul>
+    </div>
+    
+    <div class="filter-section">
+      <h3>Medium-Materials</Medium-Materials></h3>
+      <ul>
+        <li><label><input type="checkbox"> Acrylic</label></li>
+        <li><label><input type="checkbox"> Glass</label></li>
+        <li><label><input type="checkbox"> Ink</label></li>
+        <li><label><input type="checkbox"> Mixed Media</label></li>
+        <li><label><input type="checkbox"> Oil</label></li>
+        <li><label><input type="checkbox"> Pencils</label></li>
+        <li><label><input type="checkbox"> Pastels</label></li>
+        <li><label><input type="checkbox"> Watercolour</label></li>
+      </ul>
+    </div>   
+    <!-- Price Range Filters -->
+    <div class="filter-section">
+      <h3>Price Range</h3>
+      <ul>
+        <li><label><input type="checkbox"> Below ₹5,000</label></li>
+        <li><label><input type="checkbox"> ₹5,000 - ₹10,000</label></li>
+        <li><label><input type="checkbox"> ₹10,000 - ₹20,000</label></li>
+        <li><label><input type="checkbox"> Above ₹20,000</label></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Products Section -->
+  <main class="products">
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+      <div class="item-info">
+        <h4 class="item-title">Abstract Painting</h4>
+        <p class="item-price">$100</p>
+        <button class="item-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="item">
+          <img src="https://via.placeholder.com/300x200" alt="Painting" class="item-img">
+          <div class="item-info">
+            <h4 class="item-title">Abstract Painting</h4>
+            <p class="item-price">$100</p>
+            <button class="item-btn">Add to Cart</button>
+          </div>
+        </div>
+  </main>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Golhars</p>
+      <div class="social-links">
+        <a href="#" class="hover">Facebook</a>
+        <a href="#" class="hover">Instagram</a>
+        <a href="#" class="hover">Pinterest</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

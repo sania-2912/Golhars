@@ -1,0 +1,215 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F3F4F6;
+}
+
+.navbar {
+  background-color: #fff;
+  padding: 0px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky; 
+  max-height: 85px;
+  top: 0;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;  
+  font-size: 50px;
+  font-weight: bold;
+  color: #ff969b;
+}
+
+.logo-img {
+  width: 160px; 
+  height: auto; 
+  margin-right: 100px; 
+  margin-top: 15px; 
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 10;
+  padding: 10;
+  flex: 1; 
+  margin-right: 100px; 
+}
+
+.nav-links li {
+  padding: 10px 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-links a.active {
+  color: #F1B39F; 
+  font-weight: bold;
+  border-bottom: 2px solid #F1B39F; 
+}
+
+.nav-links a:hover {
+  color: #ff969b;
+}
+
+.customize-wall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.customize-wall h1 {
+  font-size: 36px;
+  color: #3d3636;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  stroke-dashoffset: 0%;
+  letter-spacing: 2px;
+}
+
+.tagline-compartment {
+  background-color: #fc7a7a; /* Soft color background */
+  color: white;  /* White text to contrast with the background */
+  font-size: 20px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 40px;  /* Adds space after the tagline */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 80%;  /* Limits the width for a neat appearance */
+  margin-left: auto;
+  margin-right: auto;  /* Centers the tagline compartment */
+}
+
+.tagline-compartment p {
+  margin: 0; /* Removes default paragraph margin */
+  font-style: italic; /* Adds a slight emphasis */
+}
+
+.controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  font-weight: bold;
+}
+
+.color-picker {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Styling for Each Color Circle */
+.color-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect to indicate selection */
+.color-circle:hover {
+  transform: scale(1.1);
+  border-color: #333;
+}
+
+/* Active selection effect (when user selects a color) */
+.color-circle.selected {
+  border-color: #f1b39f; /* Highlight border with accent color */
+  box-shadow: 0 0 5px 2px rgba(241, 179, 159, 0.7); /* Add subtle glow */
+}
+
+.wall {
+  position: relative;
+  width: 80%;
+  height: 500px;
+  background: url('living-room.jpg') center/cover no-repeat;
+  border: 2px solid #ddd;
+  overflow: hidden;
+}
+
+.painting {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: move;
+  border-radius: 5px;
+}
+
+.painting.circle {
+  border-radius: 50%;
+}
+
+.painting .resize {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  background-color: #f1b39f;
+  border-radius: 50%;
+  cursor: nwse-resize;
+}
+
+/* Controls for smaller screens */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+
+  .wall {
+    width: 100%;
+  }
+}
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #ff969b;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customize</title>
+  <link rel="stylesheet" href="customize.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">
+        <a href="index.html" class="logo-link">
+          <img src="logo.png" alt="Golhars Logo" class="logo-img">
+        </a>
+      </h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="hover">Home</a></li>
+          <li><a href="paintings.html" class="hover">Paintings</a></li>
+          <li><a href="crochet.html" class="hover">Crochet</a></li>
+          <li><a href="customize.html" class="hover">Customize</a></li>
+          <li><a href="cart.html" class="hover">Cart</a></li>
+          <li><a href="faq.html" class="hover">FAQ</a></li>
+          <li><a href="contact.html" class="hover">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="customize-wall">
+    <h1>Customize Your Artwork to Fit Your Space</h1>
+    <div class="tagline-compartment">
+      <p>Make your space truly yours by choosing the perfect artwork!</p>
+    </div>
+    <div class="controls">
+      <label for="wall-background">Wall Background:</label>
+      <select id="wall-background">
+        <option value="living-room">Living Room</option>
+        <option value="plain-wall">Plain Wall</option>
+      </select>
+
+      <label>Wall Color:</label>
+      <div class="color-picker">
+        <div class="color-circle" data-color="#f3f4f6" style="background-color: #f3f4f6;"></div>
+        <div class="color-circle" data-color="#D5B895" style="background-color: #D5B895;"></div>
+        <div class="color-circle" data-color="#b2b1b1" style="background-color: #b2b1b1;"></div>
+        <div class="color-circle" data-color="#f1b39f" style="background-color: #f1b39f;"></div>
+        <div class="color-circle" data-color="#d4e6f1" style="background-color: #d4e6f1;"></div>
+        <div class="color-circle" data-color="#d5dbdb" style="background-color: #d5dbdb;"></div>
+        <div class="color-circle" data-color="#f9e79f" style="background-color: #f9e79f;"></div>
+        <div class="color-circle" data-color="#808000" style="background-color: #808000;"></div>
+        <div class="color-circle" data-color="#000080" style="background-color: #000080;"></div>
+      </div>
+
+      <label for="painting-size">Painting Size:</label>
+      <select id="painting-size">
+        <option value="6x8">6"x8"</option>
+        <option value="8x12">8"x12"</option>
+        <option value="10x12">20"x12"</option>
+        <option value="12x12">12"x12"</option>
+        <option value="12x16">12"x16"</option>
+        <option value="12x18">12"x18"</option>
+        <option value="16x16">16"x16"</option>
+        <option value="16x20">16"x20"</option>
+        <option value="18x20">18"x20"</option>
+        <option value="18x24">18"x24"</option>
+        <option value="24x24">24"x24"</option>
+        <option value="24x32">24"x32"</option>
+        <option value="circle">Circle (30cm diameter)</option>
+      </select>
+
+      <button id="add-painting">Add Painting</button>
+    </div>
+
+    <div id="room" class="wall"></div>
+  </div>
+
+  <script src="customize.js"></script>
+
+  <footer class="footer">
+    <div class="container3">
+      <p>© 2024 Golhars</p>
+      <div class="social-links">
+        <a href="#" class="hover">Facebook</a>
+        <a href="#" class="hover">Instagram</a>
+        <a href="#" class="hover">Pinterest</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
