@@ -1,0 +1,21 @@
+.payment-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 500px;
+  margin: auto;
+}
+
+.payment-container button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.payment-container button:hover {
+  background-color: #555;
+}
