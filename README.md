@@ -1,5 +1,7 @@
 # Golhars
-Golhars is an E-commerce website designed and developed to sell and commercialize my Painting Collection.
+Golhars is a personalized E-commerce platform designed and developed to showcase, promote, and sell my original handmade paintings. It represents the fusion of my artistic identity and technical skills, bringing together the vibrant world of visual art with modern web technology.
+
+This project is more than just an online store — it's a digital gallery, a creative brand, and a self-built platform for turning passion into purpose. Every feature is thoughtfully designed to reflect the uniqueness of handcrafted work and to provide a smooth, customizable experience for buyers.
 
 ## 🧭 Table of Contents
 
