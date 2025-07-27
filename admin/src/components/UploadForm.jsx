@@ -2,6 +2,32 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import "./UploadForm.css";
+import imageCompression from "browser-image-compression";
+
+const handleFileChange = async (e) => {
+  const selectedFiles = Array.from(e.target.files);
+
+  const compressedFiles = await Promise.all(
+    selectedFiles.map(async (file) => {
+      const options = {
+        maxSizeMB: 1.5,              
+        maxWidthOrHeight: 1920,      
+        useWebWorker: true,
+      };
+      try {
+        const compressedFile = await imageCompression(file, options);
+        return compressedFile;
+      } catch (error) {
+        console.error("Compression failed for", file.name, error);
+        return file; // fallback to original
+      }
+    })
+  );
+
+  setFiles(compressedFiles);
+  setPreview(compressedFiles.map(file => URL.createObjectURL(file)));
+};
+
 
 const UploadForm = () => {
   const [files, setFiles] = useState([]);

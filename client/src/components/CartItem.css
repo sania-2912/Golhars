@@ -6,8 +6,8 @@
 }
 
 .cart-image {
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 350px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -31,7 +31,8 @@
 .remove-btn {
   background: none;
   border: none;
-  color: crimson;
+  color: rgb(249, 249, 249);
+  background-color: rgb(240, 81, 81);
   margin-top: 0.5rem;
   cursor: pointer;
 }

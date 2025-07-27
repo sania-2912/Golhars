@@ -19,7 +19,7 @@
 
 .cart-summary button {
   padding: 0.75rem 1.5rem;
-  background-color: #333;
+  background-color: #1b1b1b;
   color: white;
   border: none;
   border-radius: 6px;
@@ -27,5 +27,5 @@
 }
 
 .cart-summary button:hover {
-  background-color: #555;
+  background-color: #d74545;
 }

@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const paintingRoutes = require('./routes/paintingRoutes');
+const paintingRoutes = require("./routes/paintingRoutes");
 const orderRoutes = require('./routes/orderRoutes');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const recommendRoute = require('./routes/recommend');
 
 const app = express();
 
@@ -15,10 +17,12 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/paintings', paintingRoutes);
+app.use("/api/paintings", paintingRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use('/api/recommend', recommendRoute);
 
 app.get('/', (req, res) => {
   res.send('🎨 Golhars Painting API is running!');

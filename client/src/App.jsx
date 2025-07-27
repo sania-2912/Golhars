@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Paintings from "./pages/Paintings";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import CardDetail from "./components/CardDetail";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -25,23 +26,28 @@ const App = () => {
     setCartItems((prev) => prev.filter((item) => item !== itemToRemove));
   };
 
+  const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+
   return (
     <Router>
-      <Navbar cartCount={cartItems.length} />
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<Home addToCart={addToCart} />} />
-          <Route path="/paintings" element={<Paintings addToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />} />
-          <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <div className="app-layout">
+        <Navbar cartCount={cartItems.length} />
+        <main className="app-content">
+          <Routes>
+            <Route path="/" element={<Home addToCart={addToCart} />} />
+            <Route path="/paintings" element={<Paintings addToCart={addToCart} />} />
+            <Route path="/painting/:id" element={<CardDetail />} />
+            <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} />} />
+            <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/payment" element={<Payment amount={total} />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 };

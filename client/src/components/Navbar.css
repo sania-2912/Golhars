@@ -14,7 +14,7 @@
 
 .navbar-logo img {
   padding-left: 30px;
-  height: 46px;
+  height: 45px;
 }
 
 .navbar-links {
@@ -46,7 +46,7 @@
     top: 65px;
     left: 0;
     width: 100%;
-    background-color: rgb(13, 12, 12);
+    background-color: rgb(252, 249, 249);
     flex-direction: column;
     padding: 10px 0;
     gap: 15px;

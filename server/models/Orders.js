@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema(
     allProduct: [
       {
         id: { type: ObjectId, ref: "products" },
-        quantitiy: Number,
+        quantity: Number,
       },
     ],
     user: {
@@ -18,7 +18,15 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    transactionId: {
+    razorpayOrderId: {
+      type: String,
+      required: true,
+    },
+    razorpayPaymentId: {
+      type: String,
+      required: true,
+    },
+    razorpaySignature: {
       type: String,
       required: true,
     },
@@ -33,13 +41,7 @@ const orderSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "Not processed",
-      enum: [
-        "Not processed",
-        "Processing",
-        "Shipped",
-        "Delivered",
-        "Cancelled",
-      ],
+      enum: ["Not processed", "Processing", "Shipped", "Delivered", "Cancelled"],
     },
   },
   { timestamps: true }

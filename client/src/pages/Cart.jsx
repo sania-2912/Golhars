@@ -1,28 +1,31 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../redux/cartSlice";
 import CartItem from "../components/CartItem";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 
-const Cart = ({ cartItems, removeFromCart }) => {
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+const Cart = () => {
+  const cartItems = useSelector((state) => state.cart.items); // ✅ fixed
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleCheckout = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: cartItems }),
-      });
+  const total = cartItems.reduce(
+    (acc, item) => acc + (item.price || 0) * item.quantity,
+    0
+  );
 
-      const data = await response.json();
+  const handleQuantityChange = (item, newQty) => {
+    if (newQty < 1) return;
 
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert("Failed to redirect to payment.");
-      }
-    } catch (error) {
-      console.error("Checkout error:", error);
-      alert("Something went wrong.");
+    if (newQty > item.quantity) {
+      dispatch(increaseQuantity({ _id: item._id, size: item.size }));
+    } else {
+      dispatch(decreaseQuantity({ _id: item._id, size: item.size }));
     }
   };
 
@@ -35,12 +38,19 @@ const Cart = ({ cartItems, removeFromCart }) => {
       ) : (
         <>
           {cartItems.map((item, index) => (
-            <CartItem key={index} item={item} onRemove={removeFromCart} />
+            <CartItem
+              key={`${item._id}-${item.size}`}
+              item={item}
+              onUpdateQty={handleQuantityChange}
+              onRemove={() => dispatch(removeFromCart({ _id: item._id, size: item.size }))}
+            />
           ))}
 
           <div className="cart-summary">
-            <h3>Total: ₹{total}</h3>
-            <button onClick={handleCheckout}>Proceed to Checkout</button>
+            <h3>Total: ₹{total.toLocaleString()}</h3>
+            <button className="checkout-btn" onClick={() => navigate("/checkout")}>
+              Proceed to Checkout
+            </button>
           </div>
         </>
       )}

@@ -1,10 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { getAllPaintings, addPainting } = require("../controllers/paintingController");
-const upload = require("../middleware/uploadMiddleware");
+const { getAllPaintings, getPaintingById } = require('../controllers/paintingController');
 
-router.get("/", getAllPaintings);
+// Fetch all paintings
+router.get('/', getAllPaintings);
 
-router.post("/", upload.array("images", 5), addPainting);
+// Fetch single painting by ID
+router.get('/:id', getPaintingById);
 
 module.exports = router;

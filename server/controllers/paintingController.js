@@ -2,8 +2,6 @@ const { Readable } = require("stream");
 const Painting = require("../models/Painting");
 const cloudinary = require("../config/cloudinary");
 
-// @desc    Get all paintings
-// @route   GET /api/paintings
 const getAllPaintings = async (req, res) => {
   try {
     const paintings = await Painting.find().sort({ createdAt: -1 });
@@ -14,8 +12,16 @@ const getAllPaintings = async (req, res) => {
   }
 };
 
-// @desc    Upload a new painting
-// @route   POST /api/paintings
+const getPaintingById = async (req, res) => {
+  try {
+    const painting = await Painting.findById(req.params.id);
+    if (!painting) return res.status(404).json({ error: "Painting not found" });
+    res.json(painting);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 const addPainting = async (req, res) => {
   try {
     const { title, description, sizes, tags } = req.body;
@@ -23,7 +29,6 @@ const addPainting = async (req, res) => {
     const parsedSizes = JSON.parse(sizes);
     const parsedTags = tags ? JSON.parse(tags) : [];
 
-    // Upload all images to Cloudinary
     const imageUploadPromises = req.files.map((file) => {
       return new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
@@ -63,7 +68,9 @@ const addPainting = async (req, res) => {
   }
 };
 
+// ✅ FIXED: Add missing export
 module.exports = {
   getAllPaintings,
+  getPaintingById,
   addPainting,
 };
