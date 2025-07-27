@@ -45,26 +45,7 @@ This project is more than just an online store — it's a digital gallery, a cre
 
 ## 💻 Tech Stack
 
-### 🧠 Frontend (Client + Admin)
-- **HTML5**, **CSS3**, **JavaScript (ES6+)**
-- **React.js** with **Vite**
-- **Axios** for HTTP requests
-- **Tailored UI** using plain CSS and design precision (no Tailwind)
-
-### 🖥️ Backend
-**Node.js** with **Express.js**
--MongoDB Atlas (Cloud-hosted NoSQL DB) for storing product and user data
--Cloudinary for storing images and metadata securely
--REST API structure for client-server communication
--Mongoose used as ODM for MongoDB
--.env-based configuration for managing DB URI and Cloudinary secrets
--Basic authentication (upgraded to JWT-based sessions)
-
-### 🗄️ Database
--MongoDB Atlas (NoSQL document-based storage)
--Collections include products, users, orders, and customizations
--Images and associated metadata are stored via Cloudinary API
--Secure access to DB and Cloudinary via .env variables
+<p align="left"> <!-- Frontend --> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/> <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/> <img src="https://img.shields.io/badge/React.js-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React.js"/> <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/> <img src="https://img.shields.io/badge/Material--UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" alt="Material UI"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios"/> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux"/> <img src="https://img.shields.io/badge/Redux--Thunk-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux Thunk"/> <img src="https://img.shields.io/badge/React%20Router-D0021B?style=for-the-badge&logo=reactrouter&logoColor=white" alt="React Router"/> <!-- Backend --> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js"/> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js"/> <img src="https://img.shields.io/badge/MongoDB%20Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB Atlas"/> <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" alt="Mongoose"/> <img src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" alt="Cloudinary"/> <img src="https://img.shields.io/badge/JWT%20Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT Auth"/> <img src="https://img.shields.io/badge/REST%20API-FF6F00?style=for-the-badge&logo=fastapi&logoColor=white" alt="REST API"/> <img src="https://img.shields.io/badge/.ENV-F8D866?style=for-the-badge&logo=dotenv&logoColor=black" alt=".env"/> <!-- Payments --> <img src="https://img.shields.io/badge/Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe"/> <img src="https://img.shields.io/badge/Razorpay-02042B?style=for-the-badge&logo=razorpay&logoColor=white" alt="Razorpay"/> </p>
 
 Environment variables used:
 MONGO_URI=your_mongodb_atlas_uri
