@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/cartSlice"; // ✅ import
+import { addToCart } from "../redux/cartSlice";
 import "./CardDetail.css";
 
 const CardDetail = () => {
   const { id } = useParams();
-  const dispatch = useDispatch(); // ✅ fixed
+  const dispatch = useDispatch();
   const [painting, setPainting] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
 
@@ -29,11 +29,12 @@ const CardDetail = () => {
         const data = await res.json();
         setPainting(data);
 
+        // Update localStorage viewedTags as array
         if (data.tags?.length > 0) {
           const newTags = data.tags.map((tag) => tag.trim().toLowerCase());
-          const existingTags = localStorage.getItem("viewedTags")?.split(",").map(t => t.trim().toLowerCase()) || [];
-          const combined = [...new Set([...existingTags, ...newTags])];
-          localStorage.setItem("viewedTags", combined.join(","));
+          const storedTags = JSON.parse(localStorage.getItem("viewedTags")) || [];
+          const combined = [...new Set([...storedTags, ...newTags])];
+          localStorage.setItem("viewedTags", JSON.stringify(combined));
         }
       } catch (err) {
         console.error("Failed to fetch painting:", err);

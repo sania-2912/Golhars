@@ -1,51 +1,44 @@
-const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema.Types;
+const mongoose = require('mongoose');
 
-const orderSchema = new mongoose.Schema(
-  {
-    allProduct: [
-      {
-        id: { type: ObjectId, ref: "products" },
-        quantity: Number,
-      },
-    ],
-    user: {
-      type: ObjectId,
-      ref: "users",
-      required: true,
-    },
-    amount: {
-      type: Number,
-      required: true,
-    },
-    razorpayOrderId: {
-      type: String,
-      required: true,
-    },
-    razorpayPaymentId: {
-      type: String,
-      required: true,
-    },
-    razorpaySignature: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    phone: {
-      type: Number,
-      required: true,
-    },
-    status: {
-      type: String,
-      default: "Not processed",
-      enum: ["Not processed", "Processing", "Shipped", "Delivered", "Cancelled"],
-    },
+const orderSchema = new mongoose.Schema({
+  userName: {
+    type: String,
+    required: true,
   },
-  { timestamps: true }
-);
+  userEmail: {
+    type: String,
+    required: true,
+  },
+  shippingAddress: {
+    address: String,
+    city: String,
+    postalCode: String,
+    country: String,
+  },
+  orderItems: [
+    {
+      paintingId: String,
+      title: String,
+      quantity: Number,
+      size: String,
+      price: Number,
+      imageUrl: String,
+    },
+  ],
+  totalAmount: {
+    type: Number,
+    required: true,
+  },
+  isPaid: {
+    type: Boolean,
+    default: false,
+  },
+  paidAt: Date,
+  razorpayPaymentId: String,
+  razorpayOrderId: String,
+  razorpaySignature: String,
+}, {
+  timestamps: true,
+});
 
-const orderModel = mongoose.model("orders", orderSchema);
-module.exports = orderModel;
+module.exports = mongoose.model('Order', orderSchema);

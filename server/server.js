@@ -8,7 +8,8 @@ const orderRoutes = require('./routes/orderRoutes');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
-const recommendRoute = require('./routes/recommend');
+const recommendRoutes = require("./routes/recommend");
+const testimonialRoutes = require("./routes/testimonialRoutes");
 
 const app = express();
 
@@ -21,11 +22,12 @@ app.use("/api/paintings", paintingRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
-app.use("/api/payment", paymentRoutes);
-app.use('/api/recommend', recommendRoute);
+app.use('/api/payment', paymentRoutes);
+app.use("/api/recommend", recommendRoutes);
+app.use("/api/testimonials", testimonialRoutes);
 
 app.get('/', (req, res) => {
-  res.send('🎨 Golhars Painting API is running!');
+  res.send('Golhars Painting API is running!');
 });
 
 const PORT = process.env.PORT || 5000;
@@ -35,7 +37,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 })
   .then(() => {
-    console.log('✅ Connected to MongoDB');
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+  .catch(err => console.error('MongoDB connection error:', err));

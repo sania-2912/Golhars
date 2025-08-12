@@ -4,12 +4,10 @@ const initialState = {
   items: JSON.parse(localStorage.getItem('cartItems')) || [],
 };
 
-// Sync with localStorage
 const updateLocalStorage = (items) => {
   localStorage.setItem('cartItems', JSON.stringify(items));
 };
 
-// Selectors
 export const selectCartItems = (state) => state.cart.items;
 
 export const selectTotalQuantity = createSelector(
@@ -17,7 +15,6 @@ export const selectTotalQuantity = createSelector(
   (cartItems) => cartItems.reduce((sum, item) => sum + item.quantity, 0)
 );
 
-// Slice
 const cartSlice = createSlice({
   name: 'cart',
   initialState,

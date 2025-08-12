@@ -1,28 +1,39 @@
-const express = require('express');
+const express = require("express");
+const Painting = require("../models/Painting.js");
+
 const router = express.Router();
-const { spawn } = require('child_process');
 
-router.get('/', (req, res) => {
-  const tags = req.query.tags || "";
-  const python = spawn('python3', ['python/recommend.py', tags]);
+router.post("/", async (req, res) => {
+  try {
+    const tags = req.body.tags || [];
 
-  let data = '';
-  python.stdout.on('data', (chunk) => {
-    data += chunk.toString();
-  });
-
-  python.stderr.on('data', (err) => {
-    console.error('Python error:', err.toString());
-  });
-
-  python.on('close', () => {
-    try {
-      const jsonData = JSON.parse(data);
-      res.json(jsonData);
-    } catch (e) {
-      res.status(500).json({ error: 'Failed to parse Python output' });
+    if (!tags.length) {
+      const fallback = await Painting.find()
+        .sort({ views: -1 })
+        .limit(4) 
+        .lean();
+      return res.json(fallback);
     }
-  });
+    const tagFrequency = {};
+    tags.forEach(tag => {
+      tagFrequency[tag] = (tagFrequency[tag] || 0) + 1;
+    });
+
+    const recommended = await Painting.find({
+      tags: { $in: Object.keys(tagFrequency) }
+    }).lean();
+
+    recommended.sort((a, b) => {
+      const aScore = a.tags.reduce((sum, tag) => sum + (tagFrequency[tag] || 0), 0);
+      const bScore = b.tags.reduce((sum, tag) => sum + (tagFrequency[tag] || 0), 0);
+      return bScore - aScore;
+    });
+
+    res.json(recommended.slice(0, 4)); 
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 module.exports = router;

@@ -5,89 +5,108 @@ import axios from "axios";
 import "./Checkout.css";
 
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cart.items || []);
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    firstName: "",
-    lastName: "",
+  const cartItems = useSelector((state) => state.cart.items);
+  const user = useSelector((state) => state.auth?.user);
+  const [formData, setFormData] = useState({
+    email: user?.email || "",
+    firstName: user?.name?.split(" ")[0] || "",
+    lastName: user?.name?.split(" ")[1] || "",
     address: "",
+    country: "India",
     phone: "",
   });
 
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   const handleChange = (e) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePay = async () => {
-    const sdk = await loadRazorpay();
-    if (!sdk) return alert("Failed to load Razorpay SDK.");
+  const handlePayment = async () => {
+    const res = await loadRazorpay();
+    if (!res) {
+      alert("Razorpay SDK failed to load");
+      return;
+    }
 
     try {
-      const { data: order } = await axios.post("/api/payment/create-order", { amount: total });
+      const { data: order } = await axios.post("http://localhost:5000/api/payment/create-order", {
+        amount: total * 100, 
+      });
+
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID, 
         amount: order.amount,
         currency: order.currency,
-        name: "Golhars",
+        name: "Art Store",
+        description: "Painting Purchase",
         order_id: order.id,
-        description: "Art Purchase",
-        handler: (res) => axios.post("/api/payment/verify", {
-          ...res,
-          amount: total,
-          user: userInfo,
-          items: cartItems,
-        }).then(() => alert("Payment successful!")),
-        prefill: {
-          name: `${userInfo.firstName} ${userInfo.lastName}`,
-          email: userInfo.email,
-          contact: userInfo.phone,
+        handler: async function (response) {
+          await axios.post("http://localhost:5000/api/payment/verify", {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            amount: total,
+            user,
+            address: formData,
+            items: cartItems,
+          });
+          alert("Payment Successful!");
         },
-        theme: { color: "#222" },
+        prefill: {
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        theme: {
+          color: "#3399cc",
+        },
       };
-      new window.Razorpay(options).open();
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
     } catch (err) {
-      console.error(err);
-      alert("Payment initiation failed.");
+      console.error("Payment error:", err);
+      alert("Payment failed");
     }
   };
 
   return (
-    <div className="checkout-wrapper">
-      <section className="checkout-form-section">
-        <h2>Contact & Shipping</h2>
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-        <input name="firstName" type="text" placeholder="First name" onChange={handleChange} />
-        <input name="lastName" type="text" placeholder="Last name" onChange={handleChange} />
-        <textarea name="address" placeholder="Shipping address" onChange={handleChange}></textarea>
-        <input name="phone" type="tel" placeholder="Phone number" onChange={handleChange} />
-        <button className="pay-btn" onClick={handlePay}>
-          Pay ₹{total.toLocaleString()}
-        </button>
-      </section>
+    <div className="checkout-page">
+      <div className="checkout-left">
+        <h2>Contact</h2>
+        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
 
-      <section className="checkout-summary-section">
-        <h2>Order summary</h2>
-        {cartItems.map((item, idx) => (
-          <div className="summary-item" key={idx}>
-            <img src={item.images[0]} alt={item.title} />
-            <div className="summary-info">
-              <p>{item.title}</p>
-              <p>₹{item.price.toLocaleString()} × {item.quantity}</p>
-            </div>
-          </div>
-        ))}
-        <hr />
-        <div className="summary-total">
-          <p>Subtotal</p>
-          <p>₹{total.toLocaleString()}</p>
+        <h2>Delivery</h2>
+        <select name="country" value={formData.country} onChange={handleChange}>
+          <option value="India">India</option>
+        </select>
+
+        <div className="name-fields">
+          <input type="text" name="firstName" placeholder="First name" value={formData.firstName} onChange={handleChange} />
+          <input type="text" name="lastName" placeholder="Last name" value={formData.lastName} onChange={handleChange} />
         </div>
-        <div className="summary-total">
-          <strong>Total</strong>
-          <strong>₹{total.toLocaleString()}</strong>
-        </div>
-      </section>
+        <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
+        <input type="tel" name="phone" placeholder="Phone number" value={formData.phone} onChange={handleChange} />
+        <button onClick={handlePayment}>Pay Now</button>
+      </div>
+
+      <div className="checkout-right">
+        <h2>Order Summary</h2>
+        <ul>
+          {cartItems.map((item, idx) => (
+            <li key={idx}>
+              <span>{item.title}</span>
+              <span>₹{item.price} × {item.quantity}</span>
+            </li>
+          ))}
+        </ul>
+        <h3>Total: ₹{total}</h3>
+      </div>
     </div>
   );
 };
