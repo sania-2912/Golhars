@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import loadRazorpay from "../utils/loadRazorpay";
+const API_BASE = import.meta.env.VITE_API_BASE;
 import axios from "axios";
 import "./Checkout.css";
 
@@ -34,10 +35,9 @@ const Checkout = () => {
     }
 
     try {
-      const { data: order } = await axios.post("http://localhost:5000/api/payment/create-order", {
-        amount: total * 100, 
+      const { data: order } = await axios.post(`${API_BASE}/api/payment/create-order`, {
+        amount: total * 100,
       });
-
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID, 
         amount: order.amount,
@@ -46,7 +46,7 @@ const Checkout = () => {
         description: "Painting Purchase",
         order_id: order.id,
         handler: async function (response) {
-          await axios.post("http://localhost:5000/api/payment/verify", {
+          await axios.post(`${API_BASE}/api/payment/verify`, {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,

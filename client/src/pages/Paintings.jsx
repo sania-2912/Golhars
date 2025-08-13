@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import CardGrid from "../components/CardGrid";
+import { API_BASE } from "../utils/config";
 import "./Paintings.css";
 
 const Paintings = () => {
@@ -16,7 +17,7 @@ const Paintings = () => {
   useEffect(() => {
     const fetchPaintings = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/paintings");
+        const res = await fetch(`${API_BASE}/api/paintings`);
         const data = await res.json();
 
         if (Array.isArray(data)) {

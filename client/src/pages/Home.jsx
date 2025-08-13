@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import RecommendCarousel from "../components/RecommendCarousal";
-import CardGrid from "../components/CardGrid"; // using existing card grid
+import CardGrid from "../components/CardGrid";
+import { API_BASE } from "../utils/config"; 
 import "./Home.css";
 
 const Home = () => {
@@ -18,20 +19,18 @@ const Home = () => {
       let res;
 
       if (userId) {
-        res = await axios.get(
-          `http://localhost:5000/api/paintings/recommendations/${userId}`
-        );
+        res = await axios.get(`${API_BASE}/api/paintings/recommendations/${userId}`);
       }
 
       if (!userId || !res.data || res.data.length === 0) {
-        res = await axios.get("http://localhost:5000/api/paintings");
+        res = await axios.get(`${API_BASE}/api/paintings`);
       }
 
       setPaintings(res.data);
     } catch (error) {
       console.error("Error fetching paintings:", error);
       try {
-        const fallback = await axios.get("http://localhost:5000/api/paintings");
+        const fallback = await axios.get(`${API_BASE}/api/paintings`);
         setPaintings(fallback.data);
       } catch (err) {
         console.error("Error fetching fallback paintings:", err);
@@ -43,21 +42,13 @@ const Home = () => {
 
   if (loading) return <p>Loading paintings...</p>;
 
-  // Get exactly 6 random paintings for the bottom grid
-  const randomPaintings = paintings
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 6);
+  const randomPaintings = paintings.sort(() => 0.5 - Math.random()).slice(0, 6);
 
   return (
     <div className="home-container">
-      {/* Carousel Section */}
       {paintings.length > 0 && <RecommendCarousel paintings={paintings} />}
-
-      {/* Random Paintings Section */}
       <h2 className="section-title">Explore Our Collection</h2>
-      <CardGrid paintings={randomPaintings} /> {/* reusing existing grid */}
-
-      {/* View All Button */}
+      <CardGrid paintings={randomPaintings} />
       <div className="view-all-container">
         <a href="/Paintings" className="view-all-btn">
           View All Paintings
