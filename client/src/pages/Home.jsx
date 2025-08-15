@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import RecommendCarousel from "../components/RecommendCarousal";
 import CardGrid from "../components/CardGrid";
 import { API_BASE } from "../utils/config"; 
@@ -50,9 +51,9 @@ const Home = () => {
       <h2 className="section-title">Explore Our Collection</h2>
       <CardGrid paintings={randomPaintings} />
       <div className="view-all-container">
-        <a href="/Paintings" className="view-all-btn">
+        <Link to="/paintings" className="view-all-btn">
           View All Paintings
-        </a>
+        </Link>
       </div>
     </div>
   );
