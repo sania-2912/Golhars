@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
+import { API_BASE } from "../utils/config"; 
 import "./CardDetail.css";
 
 const CardDetail = () => {
@@ -25,11 +26,9 @@ const CardDetail = () => {
   useEffect(() => {
     const fetchPainting = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/paintings/${id}`);
+        const res = await fetch(`${API_BASE}/api/paintings/${id}`);
         const data = await res.json();
         setPainting(data);
-
-        // Update localStorage viewedTags as array
         if (data.tags?.length > 0) {
           const newTags = data.tags.map((tag) => tag.trim().toLowerCase());
           const storedTags = JSON.parse(localStorage.getItem("viewedTags")) || [];

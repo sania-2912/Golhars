@@ -4,18 +4,19 @@
   margin: 0 auto;
   position: relative;
   padding: 20px;
-  background-color: rgb(255, 164, 173); 
+  background-color: rgb(255, 164, 173);
   border-radius: 20px;
 }
 
 .carousel-image {
   width: 100%;
-  height: 450px;
-  object-fit: contain; /* Fits all paintings nicely */
+  height: 470px;
+  object-fit: contain;
   border-radius: 16px;
-  background-color: rgb(253, 166, 175); /* frame effect */
+  background-color: rgb(253, 166, 175);
   padding: 10px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carousel-image:hover {
@@ -27,15 +28,22 @@
 .swiper-button-prev {
   color: #fff;
   background: rgba(0, 0, 0, 0.4);
-  padding: 12px;
+  width: 38px;   
+  height: 38px;
   border-radius: 50%;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
   opacity: 0;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px;  
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
 }
 
 .recommend-swiper:hover .swiper-button-next,
@@ -44,24 +52,54 @@
 }
 
 .swiper-pagination-bullet {
-  background: #d56060;
+  background: #393636;
   opacity: 0.8;
 }
 
 .swiper-pagination-bullet-active {
-  background: #dc5050; /* deep pink */
+  background: #222121;
   transform: scale(1.2);
   opacity: 1;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 900px) {
   .carousel-image {
-    height: 320px;
+    height: 350px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 30px;
+    height: 30px;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-image {
+    height: 350px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 26px;
+    height: 26px;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .carousel-image {
-    height: 240px;
+    height: 540px;
   }
+  
 }
