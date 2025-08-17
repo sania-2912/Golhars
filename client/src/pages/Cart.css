@@ -11,10 +11,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .cart-summary h3 {
   margin: 0;
+  font-size: 1.2rem; 
 }
 
 .cart-summary button {
@@ -24,8 +26,43 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 0.5rem; 
 }
 
 .cart-summary button:hover {
   background-color: #d74545;
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 1.5rem;
+  }
+
+  .cart-summary h3 {
+    font-size: 1rem;
+  }
+
+  .cart-summary button {
+    padding: 0.65rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container {
+    padding: 1rem;
+  }
+
+  .cart-summary {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  .cart-summary h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-summary button {
+    width: 100%; 
+    padding: 0.75rem;
+  }
 }
