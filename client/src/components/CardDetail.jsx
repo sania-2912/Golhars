@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { API_BASE } from "../utils/config"; 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./CardDetail.css";
 
 const CardDetail = () => {
@@ -20,6 +22,20 @@ const CardDetail = () => {
         price: size.price,
         quantity: 1,
       })
+    );
+
+    // ✅ Show toast notification
+    toast.success(
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <img
+          src={painting.images[0]}
+          alt={painting.title}
+          style={{ width: "40px", height: "40px", marginRight: "10px", borderRadius: "6px" }}
+        />
+        <div>
+          <strong>{painting.title}</strong> added to cart!
+        </div>
+      </div>
     );
   };
 
@@ -85,6 +101,9 @@ const CardDetail = () => {
           ))}
         </div>
       </div>
+
+      {/* ✅ Toast Container */}
+      <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
     </div>
   );
 };

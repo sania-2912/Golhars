@@ -5,7 +5,6 @@ require('dotenv').config();
 
 const paintingRoutes = require("./routes/paintingRoutes");
 const orderRoutes = require('./routes/orderRoutes');
-const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const recommendRoutes = require("./routes/recommend");
@@ -20,7 +19,6 @@ app.use(express.json());
 // Routes
 app.use("/api/paintings", paintingRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use("/api/recommend", recommendRoutes);
